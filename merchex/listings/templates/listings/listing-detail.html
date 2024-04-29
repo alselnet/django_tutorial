@@ -1,0 +1,21 @@
+{% extends 'listings/base.html' %}
+
+{% block content %}
+
+<h2>{{ listing.title }}</h2>
+
+<ul>
+ <li>Type: {{ listing.get_type_display}}</li>
+ <li>Year: {{ listing.year }}</li>
+ <li>Sold: {{ listing.sold|yesno }}</li>
+ <li>Related Band: {{ listing.band }}</li>
+
+ {% if listing.description %}
+ <li>{{ listing.description }}</li>
+ {% endif %}
+ <a href="{% url 'listing update' listing.id %}">Edit this listing</a>
+ <a href="{% url 'listing delete' listing.id %}">Delete this listing</a>
+<a href="{% url "listings" %}">Back to all listings</a>
+</ul>
+
+{% endblock %}
